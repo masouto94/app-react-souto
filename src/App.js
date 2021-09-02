@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import NavMenu  from './NavMenu/NavMenu';
+import NavMenu  from './Components/NavMenu/NavMenu';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
