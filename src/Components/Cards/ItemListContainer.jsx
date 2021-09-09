@@ -53,6 +53,7 @@ const ItemListContainer = (props) => {
             </div>               
             <div className="card-footer">
             <CounterButtonRemove name={producto.name} stock={producto.stock} initial={1} onAdd={onAdd} />
+            <>1</>
         <CounterButtonAdd name={producto.name}  stock={producto.stock} initial={1} onAdd={onAdd} />
             </div>
         </div>)
