@@ -2,8 +2,8 @@ import './App.css';
 import NavMenu  from './Components/NavMenu/NavMenu';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartWidget from './Components/NavMenu/CartWidget';
-import ItemListContainer from './Components/NavMenu/ItemListContainer';
-import { Cards } from './Components/NavMenu/Cards/Cards';
+import ItemListContainer from './Components/Cards/ItemListContainer';
+import { Cards } from './Components/Cards/Cards';
 
 
 function App() {
