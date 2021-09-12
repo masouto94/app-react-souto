@@ -2,11 +2,16 @@ import './App.css';
 import NavMenu  from './Components/NavMenu/NavMenu';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartWidget from './Components/NavMenu/CartWidget';
-import ItemListContainer from './Components/Cards/ItemListContainer';
-import { Cards } from './Components/Cards/Cards';
+import { ItemListContainer } from './Components/Cards/ItemListContainer';
+
 
 
 function App() {
+  const onAdd = (cantidad) =>{
+    console.log(cantidad)
+  }
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -15,8 +20,8 @@ function App() {
       <CartWidget/>
       </NavMenu>
       </header>
-      <ItemListContainer mensaje={"Bienvenidx a la Mascotienda"}>
-      <Cards/>
+      <ItemListContainer mensaje={"Bienvenidx a la Mascotienda"} onAdd={onAdd}>
+      
       </ItemListContainer>
     </div>
   );
