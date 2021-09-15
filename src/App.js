@@ -1,10 +1,11 @@
 import './App.css';
-import NavMenu  from './Components/NavMenu/NavMenu';
+import { BrowserRouter,Switch, Route} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavMenu  from './Components/NavMenu/NavMenu';
 import CartWidget from './Components/NavMenu/CartWidget';
-import { ItemListContainer } from './Components/Cards/ItemListContainer';
-
-
+import  {ItemListContainer}  from './Components/Cards/ItemListContainer';
+import  ItemDetailContainer  from './Components/Cards/ItemDetailContainer';
+import  Cart  from './Components/Cart/Cart';
 
 function App() {
   const onAdd = (cantidad) =>{
@@ -13,6 +14,7 @@ function App() {
 
 
   return (
+    <BrowserRouter>
     <div className="App">
       <header className="App-header">
       
@@ -20,10 +22,20 @@ function App() {
       <CartWidget/>
       </NavMenu>
       </header>
-      <ItemListContainer mensaje={"Bienvenidx a la Mascotienda"} onAdd={onAdd}>
+      <Switch exact path='/'>
+      <Route>
+      <ItemListContainer mensaje={"Bienvenidx a la Mascotienda"} >
       
       </ItemListContainer>
+      </Route>
+
+      <Route exact path='/detalles' component={ItemDetailContainer}/>
+
+      <Route exact path='/cart' component={Cart}/>
+      
+      </Switch>
     </div>
+    </BrowserRouter>
   );
 }
 
