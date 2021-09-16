@@ -27,3 +27,5 @@ const fakeFetch2 = (filtro) =>{
 })
     )};
 
+fakeFetch2()
+
