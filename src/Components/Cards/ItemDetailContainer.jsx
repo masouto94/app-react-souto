@@ -1,5 +1,5 @@
 import ItemDetail from './ItemDetail'
-import { useEffect,useState } from "module";
+import { useEffect,useState, useParams } from "module";
 const getItemDetail = () => {  
     return new Promise((resolve)=>{
         setTimeout(()=>{resolve( [
@@ -9,12 +9,17 @@ const getItemDetail = () => {
                 ])},2000)
     })
 }
+
+
 const ItemDetailContainer = () => {
     const [detalle, setDetalles] = useState()
+    const {productID} = useParams()
     useEffect(() => {
-        getItemDetail().then((res)=> setDetalles(res))
+        getItemDetail()
+        .then((res)=> setDetalles(res))
+        
         return;
-    }, [])
+    }, [productID])
     console.log('detalles', detalle)
     return (
         <>

@@ -11,7 +11,7 @@ const NavMenu = (props) =>{
         <Navbar bg="light" expand="lg">
           
         
-        <Navbar.Brand href="#">Home</Navbar.Brand>
+        <Navbar.Brand href="/">Home</Navbar.Brand>
         
             <Nav className="Navbar">
               {props.categorias.map((i) => <Nav.Link href="#">{i}</Nav.Link>)}
