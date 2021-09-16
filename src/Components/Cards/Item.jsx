@@ -1,5 +1,6 @@
 import React from 'react'
 import {ItemCount} from './ItemCount'
+import ItemDetailContainer from './ItemDetailContainer'
 
 const Item = ({producto}) => {
     return (
@@ -11,7 +12,7 @@ const Item = ({producto}) => {
             </div>               
             <div className="card-footer">
             <ItemCount stock={producto.stock} initial={1} onAdd={ItemCount.onAdd}/>
-            <button>Detalles</button>
+            <button Link_to={<ItemDetailContainer/>}></button>
             </div>
         </div>   
         </>
