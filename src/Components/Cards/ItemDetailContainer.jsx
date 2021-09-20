@@ -1,5 +1,7 @@
 import ItemDetail from './ItemDetail'
-import { useEffect,useState, useParams } from "module";
+import { useEffect,useState } from "react";
+import { useParams } from "react-router-dom";
+
 const getItemDetail = () => {  
     return new Promise((resolve)=>{
         setTimeout(()=>{resolve( [
@@ -12,14 +14,20 @@ const getItemDetail = () => {
 
 
 const ItemDetailContainer = () => {
-    const [detalle, setDetalles] = useState()
-    const {productID} = useParams()
+    const [detalle, setDetalle] = useState([])
+    const {productId} = useParams()
     useEffect(() => {
+        console.log(productId)
+
         getItemDetail()
-        .then((res)=> setDetalles(res))
-        
-        return;
-    }, [productID])
+        .then(r =>{
+            setDetalle(   r.filter(det => det.id === productId)   )         
+        })
+        .catch(error => console.log(error))
+
+
+    }, [productId])
+   
     console.log('detalles', detalle)
     return (
         <>

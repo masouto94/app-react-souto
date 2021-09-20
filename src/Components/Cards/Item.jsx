@@ -1,6 +1,5 @@
 import React from 'react'
 import {ItemCount} from './ItemCount'
-import ItemDetailContainer from './ItemDetailContainer'
 import { Link } from 'react-router-dom'
 
 const Item = ({producto}) => {
@@ -13,7 +12,9 @@ const Item = ({producto}) => {
             </div>               
             <div className="card-footer">
             <ItemCount stock={producto.stock} initial={1} onAdd={ItemCount.onAdd}/>
-            <Link to={`/detalles/${producto.id}`}>Detalles</Link>
+            <Link to={`/detalle/${producto.id}`}>
+            <button className="btn btn-outline-primary btn-block">Detalles</button>
+            </Link>
             </div>
         </div>   
         </>

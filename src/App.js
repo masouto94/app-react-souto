@@ -29,7 +29,9 @@ function App() {
       </ItemListContainer>
       </Route>
 
-      <Route exact path='/detalles/:productID' component={ItemDetailContainer}/>
+      <Route exact path='/categoria/:Categoria' component={ItemListContainer} />
+
+      <Route exact path='/detalle/:id' component={ItemDetailContainer}/>
 
       <Route exact path='/cart' component={Cart}/>
       
