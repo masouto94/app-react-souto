@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 
 const NavMenu = (props) =>{
 
+
+       
+
         return(
    
         
@@ -15,7 +18,8 @@ const NavMenu = (props) =>{
         <Navbar.Brand href="/">Home</Navbar.Brand>
         
             <Nav className="Navbar">
-              {props.categorias.map((i) => <Nav.Link as={Link} to={`/categoria/${i}`}>{i}</Nav.Link>)}
+              {props.categorias.map((i) => <Nav.Link as={Link} to={`/categoria/${i}`}>{i}</Nav.Link>)
+              }
 
               
             </Nav>

@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavMenu  from './Components/NavMenu/NavMenu';
 import CartWidget from './Components/NavMenu/CartWidget';
 import  {ItemListContainer}  from './Components/Cards/ItemListContainer';
-import  ItemDetailContainer  from './Components/Cards/ItemDetailContainer';
+import  {ItemDetailContainer}  from './Components/Cards/ItemDetailContainer';
 import  Cart  from './Components/Cart/Cart';
 
 function App() {
@@ -22,18 +22,18 @@ function App() {
       <CartWidget/>
       </NavMenu>
       </header>
-      <Switch exact path='/'>
-      <Route>
+      <Switch  >
+      <Route path='/' exact>
       <ItemListContainer mensaje={"Bienvenidx a la Mascotienda"} >
       
       </ItemListContainer>
       </Route>
 
-      <Route exact path='/categoria/:Categoria' component={ItemListContainer} />
+      <Route   path='/categoria/:Categoria'  component={ItemListContainer} />
 
-      <Route exact path='/detalle/:id' component={ItemDetailContainer}/>
+      <Route   path='/detalle/:productId' exact component={ItemDetailContainer}/>
 
-      <Route exact path='/cart' component={Cart}/>
+      <Route  exact path='/cart' component={Cart}/>
       
       </Switch>
     </div>
