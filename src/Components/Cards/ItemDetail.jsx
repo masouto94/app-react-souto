@@ -1,5 +1,8 @@
 import React from 'react'
 import {useCartContext} from '../../Contexts/CartContext'
+import { ItemCount } from './ItemCount'
+
+
 const ItemDetail = ({item}) => {
     const {addToCart} = useCartContext
     console.log(addToCart)
@@ -21,11 +24,7 @@ const ItemDetail = ({item}) => {
                             </p>
                         </div>
                         <div className="card-footer">
-                            <button
-                                className="btn btn-outline-primary btn-block "
-                            >
-                                Agregar al carrito
-                            </button>
+                            <ItemCount stock={item.stock} initial ={1} onAdd={onAdd}/>
                         </div>
                     </div>)}
         
