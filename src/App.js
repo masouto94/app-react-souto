@@ -6,6 +6,9 @@ import CartWidget from './Components/NavMenu/CartWidget';
 import  {ItemListContainer}  from './Components/Cards/ItemListContainer';
 import  {ItemDetailContainer}  from './Components/Cards/ItemDetailContainer';
 import  Cart  from './Components/Cart/Cart';
+import CartContextProvider from './Contexts/CartContext'
+import {useState} from 'react'
+
 
 function App() {
   const onAdd = (cantidad) =>{
@@ -14,6 +17,7 @@ function App() {
 
 
   return (
+    <CartContextProvider>
     <BrowserRouter>
     <div className="App">
       <header className="App-header">
@@ -38,6 +42,7 @@ function App() {
       </Switch>
     </div>
     </BrowserRouter>
+    </CartContextProvider>
   );
 }
 
