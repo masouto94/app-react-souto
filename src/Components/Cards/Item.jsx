@@ -11,7 +11,7 @@ const Item = ({producto}) => {
                 <img src={producto.image} />
             </div>               
             <div className="card-footer">
-            <ItemCount stock={producto.stock} initial={1} onAdd={ItemCount.onAdd}/>
+            <ItemCount stock={producto.stock} initial={1} item={producto}/>
             <Link to={`/detalle/${producto.id}`}>
             <button className="btn btn-outline-primary btn-block">Detalles</button>
             </Link>

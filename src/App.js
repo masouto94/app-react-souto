@@ -11,9 +11,6 @@ import {useState} from 'react'
 
 
 function App() {
-  const onAdd = (cantidad) =>{
-    console.log(cantidad)
-  }
 
 
   return (
@@ -37,7 +34,9 @@ function App() {
 
       <Route   path='/detalle/:productId' exact component={ItemDetailContainer}/>
 
-      <Route  exact path='/cart' component={Cart}/>
+      <Route  exact path='/cart'>
+      <Cart cartList={cartList}/>
+      </Route>
       
       </Switch>
     </div>

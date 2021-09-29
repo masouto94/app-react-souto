@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import React from 'react'
+import {useCartContext} from '../../Contexts/CartContext'
 
 
-export const ItemCount = ({stock, initial,onAdd}) => {
-
+export const ItemCount = ({stock, initial,item}) => {
+    useCartContext()
     const [count, setCount] = useState(initial)
     const [type, setType] = useState('agregar')
+    
+    
 
     const agregar = () =>{
         if(count < stock){
@@ -20,12 +23,14 @@ export const ItemCount = ({stock, initial,onAdd}) => {
     }
 
     const handlerAddToCart=()=>{
-       
+        
+        item.quantity= count
+        console.log(item)
         setType('terminar')
     }
 
     const AgregarAlCarrito = () => {
-        return <button onClick={()=>handlerAddToCart} onAdd={onAdd} className="btn btn-secondary btn-outline">Agregar al carrito</button>
+        return <button onClick={handlerAddToCart}  className="btn btn-secondary btn-outline">Agregar al carrito</button>
     }
     const TerminarCompra = () =>{
         return (

@@ -1,16 +1,11 @@
 import React from 'react'
-import {useCartContext} from '../../Contexts/CartContext'
 import { ItemCount } from './ItemCount'
 
 
 const ItemDetail = ({item}) => {
-    const {addToCart} = useCartContext
-    console.log(addToCart)
+    
 
-    const onAdd=(cant)=>{
-        console.log(cant)
-        addToCart(item, cant)
-    }
+
     return (
         <>
         {item.map((item)=> <div key={item.id} className="card  mt-3 mb-3 m-auto w-50 ">
@@ -24,7 +19,7 @@ const ItemDetail = ({item}) => {
                             </p>
                         </div>
                         <div className="card-footer">
-                            <ItemCount stock={item.stock} initial ={1} onAdd={onAdd}/>
+                            <ItemCount stock={item.stock} initial ={1} item={item}/>
                         </div>
                     </div>)}
         
