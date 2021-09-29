@@ -9,7 +9,7 @@ const ItemDetail = ({item}) => {
 
     const onAdd=(cant)=>{
         console.log(cant)
-        addToCart({item:item, cantidad:cant})
+        addToCart(item, cant)
     }
     return (
         <>

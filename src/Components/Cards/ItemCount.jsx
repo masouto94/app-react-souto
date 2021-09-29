@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import React from 'react'
 
+
 export const ItemCount = ({stock, initial,onAdd}) => {
 
     const [count, setCount] = useState(initial)
@@ -19,11 +20,12 @@ export const ItemCount = ({stock, initial,onAdd}) => {
     }
 
     const handlerAddToCart=()=>{
+       
         setType('terminar')
     }
 
     const AgregarAlCarrito = () => {
-        return <button onClick={handlerAddToCart} className="btn btn-secondary btn-outline">Agregar al carrito</button>
+        return <button onClick={()=>handlerAddToCart} onAdd={onAdd} className="btn btn-secondary btn-outline">Agregar al carrito</button>
     }
     const TerminarCompra = () =>{
         return (
