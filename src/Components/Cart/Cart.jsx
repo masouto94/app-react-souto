@@ -14,7 +14,7 @@ const Cart = ({cartList}) => {
     useCartContext()
     return (
         <>
-            <h1>Este es el cart</h1>
+            {cartList.length === 0 ? <h1>No hay nada que mostrar!</h1> : <h1>Este es el cart</h1>}
             {cartList.map((producto)=> <div>{producto.name,producto.price, producto.quantity}<button onClick={removerDelCarrito(producto)}>X</button></div> )}  
             <h3>Precio total {precioTotal(cartList)}</h3>
         </>
