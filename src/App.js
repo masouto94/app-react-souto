@@ -35,7 +35,7 @@ function App() {
       <Route   path='/detalle/:productId' exact component={ItemDetailContainer}/>
 
       <Route  exact path='/cart'>
-      <Cart cartList={cartList}/>
+      <Cart/>
       </Route>
       
       </Switch>
