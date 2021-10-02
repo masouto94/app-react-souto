@@ -1,8 +1,7 @@
 import { useState, useContext, createContext } from "react";
 
 
-const CartContext = createContext([])
-export const useCartContext = () => {useContext(CartContext)}
+
 
 export const CartContextProvider = ({children}) =>{
     const [cartList, setCartList] = useState([])
@@ -25,6 +24,7 @@ export const CartContextProvider = ({children}) =>{
           }
     console.log(cartList)
     const clearCart=()=>{setCartList([])}
+    
 
 
     return(
@@ -39,4 +39,5 @@ export const CartContextProvider = ({children}) =>{
             )
 }
 
-export default  CartContextProvider
+const CartContext = createContext([])
+export const useCartContext = () => useContext(CartContext)

@@ -6,8 +6,8 @@ import CartWidget from './Components/NavMenu/CartWidget';
 import  {ItemListContainer}  from './Components/Cards/ItemListContainer';
 import  {ItemDetailContainer}  from './Components/Cards/ItemDetailContainer';
 import  Cart  from './Components/Cart/Cart';
-import CartContextProvider from './Contexts/CartContext'
-import {useState} from 'react'
+import {CartContextProvider} from './Contexts/CartContext'
+
 
 
 function App() {

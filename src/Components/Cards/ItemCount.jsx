@@ -5,12 +5,11 @@ import {useCartContext} from '../../Contexts/CartContext'
 
 
 export const ItemCount = ({stock, initial,item}) => {
-    useCartContext()
+
     const [count, setCount] = useState(initial)
     const [type, setType] = useState('agregar')
     
-    
-
+   
     const agregar = () =>{
         if(count < stock){
             setCount(count+1)

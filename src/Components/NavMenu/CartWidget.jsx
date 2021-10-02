@@ -3,8 +3,10 @@ import * as Icon  from 'react-bootstrap-icons';
 import {useCartContext} from '../../Contexts/CartContext'
 
 
-const CartWidget = ({count}) => {
-    return (  
-        <i><Icon.Basket2Fill fill={'black'}/>{count}</i>
-    )}
+const CartWidget = () => {
+    // const {cartList} = useCartContext()
+
+    return (  <>
+        <i style={{color: "black"}}>1<Icon.Basket2Fill fill={'black'}/></i>
+    </>)}
 export default CartWidget

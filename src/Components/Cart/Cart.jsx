@@ -1,5 +1,6 @@
 import React from 'react'
 import {useCartContext} from '../../Contexts/CartContext'
+
 const Cart = () => {
     const {cartList} = useCartContext();
     const precioTotal = (carrito) =>{
