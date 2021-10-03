@@ -4,9 +4,10 @@ import {useCartContext} from '../../Contexts/CartContext'
 
 
 const CartWidget = () => {
-    // const {cartList} = useCartContext()
+    const {iconBubble} = useCartContext();
+    
 
     return (  <>
-        <i style={{color: "black"}}>1<Icon.Basket2Fill fill={'black'}/></i>
+        <i style={{color: "black"}}>{iconBubble()}<Icon.Basket2Fill fill={'black'}/></i>
     </>)}
 export default CartWidget

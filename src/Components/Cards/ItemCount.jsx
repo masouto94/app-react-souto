@@ -5,7 +5,7 @@ import {useCartContext} from '../../Contexts/CartContext'
 
 
 export const ItemCount = ({stock, initial,item}) => {
-
+    const {addToCart} = useCartContext() 
     const [count, setCount] = useState(initial)
     const [type, setType] = useState('agregar')
     
@@ -24,7 +24,7 @@ export const ItemCount = ({stock, initial,item}) => {
     const handlerAddToCart=()=>{
         
         item.quantity= count
-        console.log(item)
+        addToCart(item)
         setType('terminar')
     }
 

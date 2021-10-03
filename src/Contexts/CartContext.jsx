@@ -14,26 +14,45 @@ export const CartContextProvider = ({children}) =>{
                 
         
               setCartList(currentCart)
+              console.log(cartList)
         
             } else {
         
               setCartList([...cartList, item])
-        
+              console.log(cartList)
             }
         
           }
-    console.log(cartList)
     const clearCart=()=>{setCartList([])}
+
+    const deleteFromCart = (item) => {
+      const deleteProduct = cartList.filter((prod) => prod.id !== item.id);
+        
+      setCartList([...deleteProduct])
+      console.log(cartList)
+  }
+  const getTotalPrice = (carrito) =>{
+    let precio = 0
+    carrito.forEach(i=> {precio += i.price * i.quantity});
+    return precio
+}
+  const iconBubble = ()=>{
+    console.log("LALALALLAL",cartList.reduce( (key, value)=> key + value.quantity, 0))
+    return cartList.reduce( (key, value)=> key + value.quantity, 0)
+  }
     
 
 
     return(
     
-            <CartContext.Provider value={
+            <CartContext.Provider value={{
                 cartList,
                 addToCart,
-                clearCart
-            }>
+                clearCart,
+                deleteFromCart,
+                getTotalPrice,
+                iconBubble
+            }}>
                 {children}
             </CartContext.Provider>
             )
