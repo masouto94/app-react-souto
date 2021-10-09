@@ -13,9 +13,9 @@ const CartItem = ({productos}) => {
             <div>
             {cartList.map(producto=> {<>
             <ul>
-                    <li>{producto.name}</li>
-                    <li>{producto.price}</li>
-                    <li>{producto.quantity}</li>
+                    <li>{producto?.name}</li>
+                    <li>{producto?.price}</li>
+                    <li>{producto?.quantity}</li>
             </ul>
                     <button onClick={()=>deleteFromCart(producto)}>Eliminar del carrito</button>
                 </>} )}

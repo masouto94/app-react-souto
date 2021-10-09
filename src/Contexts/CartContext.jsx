@@ -43,6 +43,7 @@ export const CartContextProvider = ({children}) =>{
   }
   
   const confirmOrder = (carrito,userInfo) =>{
+    
     const db= getFirestore()
     const ordenes= db.collection("ordenes")
     const newOrder={
