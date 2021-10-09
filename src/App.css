@@ -27,5 +27,17 @@
   color: #61dafb;
 }
 
+.gridProductos{
+  display: grid;
+  grid-template-columns: repeat(2, 50vw);
+  margin: 0 10%};
+  
+
+.itemGrid{
+  grid-template-columns: auto;
+}
 
 
+.card-body img{
+  width:-webkit-fill-available;
+}

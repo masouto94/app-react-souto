@@ -10,7 +10,7 @@ const Cart = () => {
     return (
         <>
             {cartList.length === 0 ? <h1>No hay nada que mostrar!</h1> : <h1>Este es el cart</h1>}
-            {cartList.map(producto=> { <CartItem producto={producto} />} )}  
+            <CartItem productos={cartList} />  
             <h3>Precio total {getTotalPrice(cartList)}</h3>
         </>
     )
