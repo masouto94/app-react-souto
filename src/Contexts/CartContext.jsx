@@ -1,5 +1,7 @@
 import { useState, useContext, createContext } from "react";
+import firebase from "firebase";
 
+import { getFirestore } from "../Services/getFirebase";
 
 
 
@@ -39,7 +41,35 @@ export const CartContextProvider = ({children}) =>{
   const iconBubble = ()=>{
     return cartList.reduce( (key, value)=> key + value.quantity, 0)
   }
+  
+  const confirmOrder = (carrito,userInfo) =>{
+    const db= getFirestore()
+    const ordenes= db.collection("ordenes")
+    const newOrder={
+      buyer: {name: userInfo.name, surname: userInfo.surname, phone: userInfo.phone, email: userInfo.email},
+      items: carrito.map((i)=>({id:i.id, name:i.name,quantity: i.quantity, price:i.price})),
+      date: firebase.firestore.Timestamp.fromDate(new Date()),
+      total: getTotalPrice(carrito)
+    }
+    ordenes.add(newOrder)
     
+    var productosRef = db.collection('productos')
+    for( let elem of newOrder.items){
+      console.log(elem)
+      productosRef.get()
+      .then(resp =>{
+        resp.docs.map(producto => ({id: producto.id, ...producto.data()})).filter(prod => prod.id == elem.id)
+      
+      console.log(resp.stock)
+      console.log(elem.quantity)
+      var nuevoStock = parseInt(resp.stock) - parseInt(elem.quantity)
+      console.log(nuevoStock)
+      // productosRef.doc(elem.id).update({
+      //   stock: parseInt(nuevoStock)
+      // })
+    })
+    }
+  }
 
 
     return(
@@ -50,6 +80,7 @@ export const CartContextProvider = ({children}) =>{
                 clearCart,
                 deleteFromCart,
                 getTotalPrice,
+                confirmOrder,
                 iconBubble
             }}>
                 {children}
