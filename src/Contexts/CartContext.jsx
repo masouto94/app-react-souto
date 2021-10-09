@@ -56,8 +56,12 @@ export const CartContextProvider = ({children}) =>{
       date: firebase.firestore.Timestamp.fromDate(new Date()),
       total: getTotalPrice(carrito)
     }
-    ordenes.add(newOrder);
+    
     alert(`La orden es: ${JSON.stringify(newOrder)}`);
+    ordenes.add(newOrder)
+    .then(doc => {alert(`Se cargó la orden con el id: ${doc.id}`)})
+    
+  
     //});
     
     // for( let elem of newOrder.items){
