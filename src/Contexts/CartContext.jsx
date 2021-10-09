@@ -1,4 +1,4 @@
-import { useState, useContext, createContext } from "react";
+import { useState, useContext, useEffect, createContext } from "react";
 import firebase from "firebase";
 
 import { getFirestore } from "../Services/getFirebase";
@@ -7,6 +7,7 @@ import { getFirestore } from "../Services/getFirebase";
 
 export const CartContextProvider = ({children}) =>{
     const [cartList, setCartList] = useState([])
+    const [stock, setStock] = useState()
     const [comprando, setComprando] = useState(true)
 
 
@@ -45,8 +46,9 @@ export const CartContextProvider = ({children}) =>{
   }
   
   const confirmOrder = (carrito,userInfo) =>{
-
     const db= getFirestore()
+    //ddduseEffect(()=>{
+
     const ordenes= db.collection("ordenes")
     const newOrder={
       buyer: {name: userInfo.name, surname: userInfo.surname, phone: userInfo.phone, email: userInfo.email},
@@ -54,27 +56,33 @@ export const CartContextProvider = ({children}) =>{
       date: firebase.firestore.Timestamp.fromDate(new Date()),
       total: getTotalPrice(carrito)
     }
-    ordenes.add(newOrder)
-    console.log(`La orden es: ${JSON.stringify(newOrder)}`)
-    var productosRef = db.collection('productos')
-    for( let elem of newOrder.items){
-      console.log(`El elemento es ${JSON.stringify(elem)}`)
-      productosRef.get()
-      .then(resp =>{
-        resp.docs.map(producto => ({id: producto.id, ...producto.data()})).filter(prod => prod.id == elem.id)
-      
-      console.log(`El stock del item a actualizar deberia ser: ${resp.stock}`)
-      console.log(`La cantidad comprada es: ${elem.quantity}`)
-      var nuevoStock = parseInt(resp.stock) - parseInt(elem.quantity)
-      console.log(`El nuevo stock es: ${nuevoStock}`)
-      console.log("La promesa de update es: ",productosRef.doc(elem.id).update({
-        stock: parseInt(nuevoStock)
-      }))
-    })
-    }
+    ordenes.add(newOrder);
+    console.log(`La orden es: ${JSON.stringify(newOrder)}`);
+    //});
+    
+    // for( let elem of newOrder.items){
+    //    console.log(`El elemento es ${JSON.stringify(elem)}`)
+    //    //Consigue los productos
+    //    db.collection('productos').get()
+    //    //Filtra la resp por id
+    //    .then(resp => {resp.docs.map(producto => ({id: producto.id, ...producto.data()})).filter(prod => prod.id == elem.id)})
+    //    //Toma el stock de la resp
+    //    .then(r => {
+    //     setStock(r.stock)
+    //     console.log(`El stock del item a actualizar deberia ser: ${stock}`)
+    //     console.log(`La cantidad comprada es: ${elem.quantity}`)
+    //     var nuevoStock = parseInt(stock) - parseInt(elem.quantity)
+    //     console.log(`El stock nuevo es: ${nuevoStock}`)
+    //    })
+    //    .then(
+    //      db.collection('productos').doc(r).update(nuevoStock)
+    //    )
+       
+    // }
     clearCart()
     setComprando(false)
-  }
+
+}
 
 
     return(
