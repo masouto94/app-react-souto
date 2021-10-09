@@ -9,6 +9,6 @@ const CartWidget = () => {
 
 
     return (  <>
-        <i style={{color: "black"}}><Nav.Link as={Link} to={'/cart'}>{iconBubble()}</Nav.Link><Icon.Basket2Fill fill={'black'}/></i>
+        <i style={{color: "black", display:"flex", flex:"50%", alignItems: "center"}}><Nav.Link as={Link} to={'/cart'}>{iconBubble()}</Nav.Link><Icon.Basket2Fill fill={'black'}/></i>
     </>)}
 export default CartWidget

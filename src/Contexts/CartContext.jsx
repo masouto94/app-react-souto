@@ -7,6 +7,8 @@ import { getFirestore } from "../Services/getFirebase";
 
 export const CartContextProvider = ({children}) =>{
     const [cartList, setCartList] = useState([])
+    const [comprando, setComprando] = useState(true)
+
 
     const addToCart=(item)=>{
         let currentCart = [...cartList]
@@ -36,14 +38,14 @@ export const CartContextProvider = ({children}) =>{
   const getTotalPrice = (carrito) =>{
     let precio = 0
     carrito.forEach(i=> {precio += i.price * i.quantity});
-    return precio
+    return parseFloat(precio).toFixed(2)
 }
   const iconBubble = ()=>{
     return cartList.reduce( (key, value)=> key + value.quantity, 0)
   }
   
   const confirmOrder = (carrito,userInfo) =>{
-    
+
     const db= getFirestore()
     const ordenes= db.collection("ordenes")
     const newOrder={
@@ -70,6 +72,8 @@ export const CartContextProvider = ({children}) =>{
       }))
     })
     }
+    clearCart()
+    setComprando(false)
   }
 
 
@@ -77,6 +81,7 @@ export const CartContextProvider = ({children}) =>{
     
             <CartContext.Provider value={{
                 cartList,
+                comprando,
                 addToCart,
                 clearCart,
                 deleteFromCart,
