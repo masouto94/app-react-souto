@@ -13,11 +13,14 @@ export const ItemCount = ({stock, initial,item}) => {
     const agregar = () =>{
         if(count < stock){
             setCount(count+1)
+            setType('agregar')
         }
+
     }
     const restar = () =>{
         if(count > 0){
             setCount(count-1)
+            setType('agregar')
         }
     }
 

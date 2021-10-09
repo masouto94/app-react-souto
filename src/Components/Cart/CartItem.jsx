@@ -1,8 +1,7 @@
 import React from 'react'
 import {useCartContext} from '../../Contexts/CartContext'
 
-const CartItem = ({productos}) => {
-    console.log(`Este es el producto ${productos}`)
+const CartItem = () => {
     const {cartList} = useCartContext();
 
     const {deleteFromCart}= useCartContext();
@@ -10,15 +9,18 @@ const CartItem = ({productos}) => {
     return (
         <>
         
-            <div>
-            {cartList.map(producto=> {<>
+            <div className="cartBox">
+            {cartList.map(producto=> <>
+            <div className="cartItem">
             <ul>
-                    <li>{producto?.name}</li>
-                    <li>{producto?.price}</li>
-                    <li>{producto?.quantity}</li>
+                    <li>Nombre:{producto?.name}</li>
+                    <li>Precio:{producto?.price}</li>
+                    <li>Cantidad:{producto?.quantity}</li>
             </ul>
-                    <button onClick={()=>deleteFromCart(producto)}>Eliminar del carrito</button>
-                </>} )}
+            <button onClick={()=>deleteFromCart(producto)}>Eliminar del carrito</button>
+            </div>
+                    
+                </> )}
 
             </div>
            

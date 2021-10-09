@@ -65,9 +65,9 @@ export const CartContextProvider = ({children}) =>{
       console.log(elem.quantity)
       var nuevoStock = parseInt(resp.stock) - parseInt(elem.quantity)
       console.log(nuevoStock)
-      // productosRef.doc(elem.id).update({
-      //   stock: parseInt(nuevoStock)
-      // })
+      console.log(productosRef.doc(elem.id).update({
+        stock: parseInt(nuevoStock)
+      }))
     })
     }
   }
