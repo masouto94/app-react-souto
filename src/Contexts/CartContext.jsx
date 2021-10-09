@@ -37,7 +37,6 @@ export const CartContextProvider = ({children}) =>{
     return precio
 }
   const iconBubble = ()=>{
-    console.log("LALALALLAL",cartList.reduce( (key, value)=> key + value.quantity, 0))
     return cartList.reduce( (key, value)=> key + value.quantity, 0)
   }
     
