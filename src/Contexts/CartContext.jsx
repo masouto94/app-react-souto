@@ -53,7 +53,7 @@ export const CartContextProvider = ({children}) =>{
       total: getTotalPrice(carrito)
     }
     ordenes.add(newOrder)
-    
+    console.log(`La orden es: ${newOrder}`)
     var productosRef = db.collection('productos')
     for( let elem of newOrder.items){
       console.log(elem)
@@ -61,11 +61,11 @@ export const CartContextProvider = ({children}) =>{
       .then(resp =>{
         resp.docs.map(producto => ({id: producto.id, ...producto.data()})).filter(prod => prod.id == elem.id)
       
-      console.log(resp.stock)
-      console.log(elem.quantity)
+      console.log(`El stock del item a actualizar deberia ser: ${resp.stock}`)
+      console.log(`La cantidad comprada es: ${elem.quantity}`)
       var nuevoStock = parseInt(resp.stock) - parseInt(elem.quantity)
-      console.log(nuevoStock)
-      console.log(productosRef.doc(elem.id).update({
+      console.log(`El nuevo stock es: ${nuevoStock}`)
+      console.log("La promesa de update es: ",productosRef.doc(elem.id).update({
         stock: parseInt(nuevoStock)
       }))
     })
