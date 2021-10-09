@@ -58,7 +58,7 @@ export const CartContextProvider = ({children}) =>{
     console.log(`La orden es: ${JSON.stringify(newOrder)}`)
     var productosRef = db.collection('productos')
     for( let elem of newOrder.items){
-      console.log(elem)
+      console.log(`El elemento es ${JSON.stringify(elem)}`)
       productosRef.get()
       .then(resp =>{
         resp.docs.map(producto => ({id: producto.id, ...producto.data()})).filter(prod => prod.id == elem.id)
