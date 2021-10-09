@@ -53,7 +53,7 @@ export const CartContextProvider = ({children}) =>{
       total: getTotalPrice(carrito)
     }
     ordenes.add(newOrder)
-    console.log(`La orden es: ${newOrder}`)
+    console.log(`La orden es: ${JSON.stringify(newOrder)}`)
     var productosRef = db.collection('productos')
     for( let elem of newOrder.items){
       console.log(elem)
