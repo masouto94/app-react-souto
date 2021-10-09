@@ -57,7 +57,7 @@ export const CartContextProvider = ({children}) =>{
       total: getTotalPrice(carrito)
     }
     ordenes.add(newOrder);
-    console.log(`La orden es: ${JSON.stringify(newOrder)}`);
+    alert(`La orden es: ${JSON.stringify(newOrder)}`);
     //});
     
     // for( let elem of newOrder.items){
