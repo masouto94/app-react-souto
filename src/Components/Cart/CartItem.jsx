@@ -17,7 +17,7 @@ const CartItem = () => {
                     <li>Precio:{producto?.price}</li>
                     <li>Cantidad:{producto?.quantity}</li>
             </ul>
-            <button onClick={()=>deleteFromCart(producto)}>Eliminar del carrito</button>
+            <button className="btn btn-secondary btn-outline" onClick={()=>deleteFromCart(producto)}>Eliminar del carrito</button>
             </div>
                     
                 </> )}

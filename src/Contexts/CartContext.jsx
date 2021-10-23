@@ -4,11 +4,19 @@ import firebase from "firebase";
 import { getFirestore } from "../Services/getFirebase";
 
 
-
+const initialFormData = Object.freeze({
+  nombre: "",
+  apellido: "",
+  email:"",
+  telefono:""
+});
 export const CartContextProvider = ({children}) =>{
     const [cartList, setCartList] = useState([])
     const [stock, setStock] = useState()
     const [comprando, setComprando] = useState(true)
+    const [formData, setFormData] = useState(initialFormData);
+    const [formOK, setFormOK] = useState(false)
+
 
 
     const addToCart=(item)=>{
@@ -45,13 +53,55 @@ export const CartContextProvider = ({children}) =>{
     return cartList.reduce( (key, value)=> key + value.quantity, 0)
   }
   
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+
+      [e.target.name]: e.target.value.trim()
+    });
+    console.log(formData)
+  };
+
+  const handleSubmit = (e) => {
+    
+    // tests
+    let alphabet_test= /[a-zA-Z]/
+    let email_test=/\w*@\w*\.com/
+    let phone_test=/[0-9]/;
+    if(alphabet_test.test(formData.nombre) ===false){
+      alert("Por favor ingrese un nombre válido")
+      e.preventDefault()
+    } 
+    else if(alphabet_test.test(formData.apellido) ===false){
+      alert("Por favor ingrese un apellido válido")
+      e.preventDefault()
+    }
+    else if(email_test.test(formData.email) ===false){
+      alert("Por favor ingrese un email válido")
+      e.preventDefault()
+    }
+    //Reemplazo de phone
+    if(typeof(formData.telefono) !== 'number' && formData.telefono !== ''){
+        formData.telefono= parseInt(formData.telefono.replaceAll(/\W|\s/g,""))
+    }   
+    else if(phone_test.test(formData.telefono) === false || formData.telefono === '' ){
+      alert("Por favor ingrese un teléfono válido")
+      e.preventDefault()
+    }
+    else{
+      setFormOK(true)
+    }
+    
+
+    
+  };
   const confirmOrder = (carrito,userInfo) =>{
     const db= getFirestore()
     //ddduseEffect(()=>{
 
     const ordenes= db.collection("ordenes")
     const newOrder={
-      buyer: {name: userInfo.name, surname: userInfo.surname, phone: userInfo.phone, email: userInfo.email},
+      buyer: {name: userInfo.nombre, surname: userInfo.apellido, phone: userInfo.telefono, email: userInfo.email},
       items: carrito.map((i)=>({id:i.id, name:i.name,quantity: i.quantity, price:i.price})),
       date: firebase.firestore.Timestamp.fromDate(new Date()),
       total: getTotalPrice(carrito)
@@ -93,7 +143,11 @@ export const CartContextProvider = ({children}) =>{
     
             <CartContext.Provider value={{
                 cartList,
+                formData,
                 comprando,
+                formOK,
+                handleChange,
+                handleSubmit,
                 addToCart,
                 clearCart,
                 deleteFromCart,
