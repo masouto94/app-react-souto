@@ -54,3 +54,24 @@
   margin-bottom: 5%;
   border-style: groove;
 }
+
+.formularioContacto {
+  display: block;
+  margin-top: 1em;
+ 
+}
+.formularioContacto label{
+  font-size: large;
+
+  justify-content: left;
+}
+.formularioContacto input{
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  
+  justify-content: right
+}
+.formularioContacto button{
+  
+margin-top: 1em;
+}

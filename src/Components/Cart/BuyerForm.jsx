@@ -8,25 +8,25 @@ const BuyerForm = ({change,submit}) => {
 
   return (
     <>
-    <div>
+    <div className="formularioContacto">
       <label>
         Nombre
         <input name="nombre" id="name"  onChange={change} />
       </label>
-      <br />
+      
       <label>
         Apellido
         <input name="apellido" id="surname" onChange={change} />
       </label>
-      <br />      <label>
+            <label>
         Correo electrónico
         <input name="email" id="email" onChange={change} />
       </label>
-      <br />      <label>
+            <label>
         Teléfono
         <input name="telefono" id="phone" onChange={change} />
       </label>
-      <br />
+      
       <button className="btn btn-outline-primary btn-block" onClick={submit}>Confirmar Datos</button>
       </div>
     </>
